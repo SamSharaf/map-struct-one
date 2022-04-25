@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpaBuddyIdeaProjectConfig" ddlActionDbType="h2" migrateIndexesAndConstraints="true">
+    <option name="defaultUnitInitialized" value="true" />
+    <option name="reverseEngineeringLastDbConnectionId" value="be4109f7-3f40-4e42-b5b5-81c8a0e972e7" />
+    <option name="reLastEntityCreationPackage" value="src/main/java/com/walmart/sem/model" />
+    <reUseDbSnapshotConnections>
+      <dbConnection id="be4109f7-3f40-4e42-b5b5-81c8a0e972e7" />
+    </reUseDbSnapshotConnections>
+    <option name="newEntityIdStrategy" />
+  </component>
+</project>

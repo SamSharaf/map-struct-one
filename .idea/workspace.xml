@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d86bbf4d-aac4-4b05-bf4b-f86c8b8c0d54" name="Changes" comment="Sixth commit" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="JUnit5 Test Class" />
+        <option value="GraphQL File" />
+        <option value="com.haulmont.jpb.JpaEntity" />
+        <option value="com.haulmont.jpb.JpaRepository" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="FifthCommit" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/resources/application.properties" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/walmart/sem/SemGraphqlApplication.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphql/author/author.graphqls" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/walmart/sem/somedto/MessageDto.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/test/java/com/walmart/sem/FileReaderUtil.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphql/post/post.graphqls" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphql/post/post-input.graphqls" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphql/author/author-input.graphqls" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/graphql/mutation/mutation.graphqls" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="25IFgfkGTYHnNj80ZbvNqmkfBzx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DatabaseDriversLRU" value="h2.unified&#10;h2&#10;mysql" />
+    <property name="DtoCreateDialog.ALL_ARGS_CONSTRUCTOR_INITIAL_PROP_KEY" value="false" />
+    <property name="DtoCreateDialog.EQUALS_HASH_CODE_INITIAL_PROP_KEY" value="false" />
+    <property name="DtoCreateDialog.HAS_SETTERS_INITIAL_INITIAL_PROP_KEY" value="true" />
+    <property name="DtoCreateDialog.TO_STRING_INITIAL_PROP_KEY" value="false" />
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit5" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5" value="" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="com.social.graphqloriginal.service" />
+      <recent name="com.social.graphqloriginal.resolver" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources/response" />
+      <recent name="$PROJECT_DIR$/src/test/resources/request" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.social.graphqloriginal.resolver.author" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.walmart.sem.subject" />
+      <recent name="com.social.graphqloriginal.resolver.post" />
+    </key>
+  </component>
+  <component name="RunManager" selected="JUnit.TestSubjectMapper">
+    <configuration name="AuthorQueryResolverTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="map-struct-one" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.social.graphqloriginal.resolver.author.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.social.graphqloriginal.resolver.author" />
+      <option name="MAIN_CLASS_NAME" value="com.social.graphqloriginal.resolver.author.AuthorQueryResolverTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="PostQueryResolverTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="map-struct-one" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.social.graphqloriginal.resolver.post.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.social.graphqloriginal.resolver.post" />
+      <option name="MAIN_CLASS_NAME" value="com.social.graphqloriginal.resolver.post.PostQueryResolverTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="TestSubjectMapper" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="map-struct-one" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.walmart.sem.subject.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.walmart.sem.subject" />
+      <option name="MAIN_CLASS_NAME" value="com.walmart.sem.subject.TestSubjectMapper" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="GraphqlApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="map-struct-one" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.social.graphqloriginal.SemGraphqlApplication" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SemGraphqlApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="map-struct-one" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.walmart.sem.SemGraphqlApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.AuthorQueryResolverTest" />
+      <item itemvalue="JUnit.PostQueryResolverTest" />
+      <item itemvalue="JUnit.TestSubjectMapper" />
+      <item itemvalue="Spring Boot.GraphqlApplication" />
+      <item itemvalue="Spring Boot.SemGraphqlApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.TestSubjectMapper" />
+        <item itemvalue="JUnit.PostQueryResolverTest" />
+        <item itemvalue="JUnit.AuthorQueryResolverTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager">
+    <option name="remove_strategy" value="true" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d86bbf4d-aac4-4b05-bf4b-f86c8b8c0d54" name="Changes" comment="Sixth commit" />
+      <created>1645206809704</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1645206809704</updated>
+      <workItem from="1645210314552" duration="1272000" />
+      <workItem from="1645212518755" duration="697000" />
+      <workItem from="1645213282992" duration="1133000" />
+      <workItem from="1645222631914" duration="5644000" />
+      <workItem from="1645230970664" duration="92439000" />
+      <workItem from="1646071254357" duration="9528000" />
+      <workItem from="1646151295080" duration="616000" />
+      <workItem from="1646152711077" duration="8769000" />
+      <workItem from="1646327009697" duration="202000" />
+      <workItem from="1646327448910" duration="392000" />
+      <workItem from="1646329267516" duration="42927000" />
+      <workItem from="1646755267248" duration="11069000" />
+      <workItem from="1646856197989" duration="1070000" />
+      <workItem from="1646857296974" duration="6358000" />
+      <workItem from="1646872501275" duration="8184000" />
+      <workItem from="1646945128579" duration="905000" />
+      <workItem from="1646954365975" duration="617000" />
+      <workItem from="1646955270795" duration="4312000" />
+      <workItem from="1646960013470" duration="1882000" />
+      <workItem from="1647114302799" duration="387000" />
+      <workItem from="1647114724332" duration="1176000" />
+      <workItem from="1647281646272" duration="411000" />
+      <workItem from="1650910482091" duration="339000" />
+    </task>
+    <task id="LOCAL-00001" summary="First commit">
+      <created>1645390119957</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1645390119957</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Second commit">
+      <created>1645467922074</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1645467922074</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Third commit">
+      <created>1645471305124</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1645471305124</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Forth commit">
+      <created>1645475263411</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1645475263412</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Fifth commit">
+      <created>1645560528330</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1645560528331</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Sixth commit">
+      <created>1645810745287</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1645810745287</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Sixth commit">
+      <created>1645812360677</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1645812360677</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Sixth commit">
+      <created>1645980712087</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1645980712087</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Sixth commit">
+      <created>1646080033857</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1646080033857</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="CUSTOM_BOOLEAN_PROPERTIES">
+                <map>
+                  <entry key="Show.Git.Branches" value="true" />
+                </map>
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="06commit" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="06commit" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="FifthCommit" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="ForthCommit" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="ThirdCommit" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="SecondCommit" />
+                </option>
+              </RecentGroup>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="HEAD" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <MESSAGE value="First commit" />
+    <MESSAGE value="Second commit" />
+    <MESSAGE value="Third commit" />
+    <MESSAGE value="Forth commit" />
+    <MESSAGE value="Fifth commit" />
+    <MESSAGE value="Sixth commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sixth commit" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/com/walmart/sem/subject/TestSubjectMapper.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

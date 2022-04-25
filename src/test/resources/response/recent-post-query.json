@@ -1,0 +1,22 @@
+{
+  "data": {
+    "recentPosts": [
+      {
+        "id": "8144f608-3e87-47ea-ad16-677d5679b445",
+        "title": "post title"
+      },
+      {
+        "id": "883b8a41-831f-4a1a-86ca-d26adc8f84aa",
+        "title": "spring boot"
+      },
+      {
+        "id": "6c80180c-51de-4f56-81c4-da0a8fbfa792",
+        "title": "REACT"
+      },
+      {
+        "id": "7e759e91-a0d4-469b-ad81-50ba3969d211",
+        "title": "JS"
+      }
+    ]
+  }
+}

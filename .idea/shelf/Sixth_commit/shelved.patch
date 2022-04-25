@@ -1,0 +1,529 @@
+Index: src/main/resources/graphql/schema.graphqls
+===================================================================
+diff --git a/src/main/resources/graphql/schema.graphqls b/src/main/resources/graphql/schema.graphqls
+deleted file mode 100644
+--- a/src/main/resources/graphql/schema.graphqls	(revision 911a778337c892c26198d1dcc726bb6b961ecbed)
++++ /dev/null	(revision 911a778337c892c26198d1dcc726bb6b961ecbed)
+@@ -1,49 +0,0 @@
+-
+-type Query {
+-    helloWorld: String!
+-    greetingMessage(firstName: String!, secondName:String):String!
+-    message: Message!
+-    rollDice: [Int!]!
+-    authors: [Author]!
+-    recentPosts(count: Int!, offset: Int!): [Post]!
+-}
+-
+-type Mutation {
+-    createAuthor(author: AuthorInput): ID!
+-    createPost(post: PostInput): ID!
+-}
+-
+-input PostInput{
+-    title:String!
+-    description: String!
+-    category: String!
+-    authorId: ID!
+-}
+-input AuthorInput {
+-    name: String!
+-    email: String!
+-}
+-type Author {
+-    id: ID!
+-    name: String!
+-    email: String!
+-    posts: [Post]!
+-}
+-
+-type Message {
+-    id:ID!
+-    text:String!
+-}
+-
+-type Post {
+-    id:ID!
+-    title:String!
+-    description: String!
+-    category: String!
+-    author: Author!
+-}
+-
+-type Comment {
+-    id:ID!
+-    text:String!
+-}
+Index: src/test/java/com/social/graphqloriginal/GraphqlOriginalApplicationTests.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.social.graphqloriginal;\n\nimport org.junit.jupiter.api.Test;\nimport org.springframework.boot.test.context.SpringBootTest;\n\n@SpringBootTest\nclass GraphqlOriginalApplicationTests {\n\n\t@Test\n\tvoid contextLoads() {\n\t}\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/social/graphqloriginal/GraphqlOriginalApplicationTests.java b/src/test/java/com/social/graphqloriginal/GraphqlOriginalApplicationTests.java
+--- a/src/test/java/com/social/graphqloriginal/GraphqlOriginalApplicationTests.java	(revision 911a778337c892c26198d1dcc726bb6b961ecbed)
++++ b/src/test/java/com/social/graphqloriginal/GraphqlOriginalApplicationTests.java	(date 1645805294742)
+@@ -2,6 +2,7 @@
+ 
+ import org.junit.jupiter.api.Test;
+ import org.springframework.boot.test.context.SpringBootTest;
++import org.springframework.context.annotation.Import;
+ 
+ @SpringBootTest
+ class GraphqlOriginalApplicationTests {
+Index: src/test/java/com/social/graphqloriginal/resolver/author/AuthorQueryResolverTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/social/graphqloriginal/resolver/author/AuthorQueryResolverTest.java b/src/test/java/com/social/graphqloriginal/resolver/author/AuthorQueryResolverTest.java
+new file mode 100644
+--- /dev/null	(date 1645809416414)
++++ b/src/test/java/com/social/graphqloriginal/resolver/author/AuthorQueryResolverTest.java	(date 1645809416414)
+@@ -0,0 +1,32 @@
++package com.social.graphqloriginal.resolver.author;
++
++import static org.assertj.core.api.Assertions.assertThat;
++import static org.junit.jupiter.api.Assertions.*;
++
++import com.graphql.spring.boot.test.GraphQLResponse;
++import com.graphql.spring.boot.test.GraphQLTestTemplate;
++import com.social.graphqloriginal.FileReaderUtil;
++import com.social.graphqloriginal.TestApplication;
++import java.io.IOException;
++import org.junit.jupiter.api.Test;
++import org.springframework.beans.factory.annotation.Autowired;
++import org.springframework.boot.test.context.SpringBootTest;
++import org.springframework.context.annotation.Import;
++
++//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT, classes = TestApplication.class)
++@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
++class AuthorQueryResolverTest {
++
++  @Autowired
++  GraphQLTestTemplate graphQLTestTemplate;
++
++  @Test
++  void getAuthors() throws IOException {
++    GraphQLResponse graphQLResponse = graphQLTestTemplate.postForResource("request/author-query.graphqls");
++    assertThat(graphQLResponse.isOk());
++//    assertThat(FileReaderUtil.read("response/author-query.json")).contains(graphQLResponse.getRawResponse().getBody());
++    assertThat(FileReaderUtil.read("response/author-query.json")).contains("b8addf5e-43f8-4165-9a5f-ab73094a5b1e");
++    assertThat(FileReaderUtil.read("response/author-query.json")).contains("023946ee-6173-4d49-8bac-c0b9e4a7ba88");
++  }
++
++}
+\ No newline at end of file
+Index: src/test/java/com/social/graphqloriginal/FileReaderUtil.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/social/graphqloriginal/FileReaderUtil.java b/src/test/java/com/social/graphqloriginal/FileReaderUtil.java
+new file mode 100644
+--- /dev/null	(date 1645805294934)
++++ b/src/test/java/com/social/graphqloriginal/FileReaderUtil.java	(date 1645805294934)
+@@ -0,0 +1,15 @@
++package com.social.graphqloriginal;
++
++import java.io.IOException;
++import java.nio.charset.StandardCharsets;
++import org.apache.commons.io.IOUtils;
++import org.springframework.core.io.ClassPathResource;
++
++public class FileReaderUtil {
++  public static String read(String location) throws IOException {
++    return IOUtils.toString(
++        new ClassPathResource(location).getInputStream(),
++        StandardCharsets.UTF_8
++    );
++  }
++}
+Index: src/test/java/com/social/graphqloriginal/TestApplication.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/java/com/social/graphqloriginal/TestApplication.java b/src/test/java/com/social/graphqloriginal/TestApplication.java
+new file mode 100644
+--- /dev/null	(date 1645807966724)
++++ b/src/test/java/com/social/graphqloriginal/TestApplication.java	(date 1645807966724)
+@@ -0,0 +1,9 @@
++package com.social.graphqloriginal;
++
++import org.springframework.context.annotation.Configuration;
++import org.springframework.context.annotation.Import;
++
++//@Configuration
++//@Import(TestApplication.class)
++public class TestApplication {
++}
+Index: src/main/resources/graphql/message/message.graphqls
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/graphql/message/message.graphqls b/src/main/resources/graphql/message/message.graphqls
+new file mode 100644
+--- /dev/null	(date 1645805294804)
++++ b/src/main/resources/graphql/message/message.graphqls	(date 1645805294804)
+@@ -0,0 +1,4 @@
++type Message {
++    id:ID!
++    text:String!
++}
+\ No newline at end of file
+Index: src/main/java/com/social/graphqloriginal/service/impl/AuthorServiceImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.social.graphqloriginal.service.impl;\n\nimport com.social.graphqloriginal.model.Author;\nimport com.social.graphqloriginal.repository.AuthorRepository;\nimport com.social.graphqloriginal.service.AuthorService;\nimport com.social.graphqloriginal.somedto.AuthorDto;\nimport java.util.List;\nimport java.util.Optional;\nimport java.util.UUID;\nimport java.util.stream.Collectors;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.stereotype.Service;\n\n@Service\npublic class AuthorServiceImpl implements AuthorService {\n\n  @Autowired\n  private AuthorRepository authorRepository;\n\n  @Override\n  public List<AuthorDto> getAuthors() {\n    List<Author> all = authorRepository.findAll();\n    return all.stream()\n        .map(author -> {\n          return AuthorDto.builder()\n              .id(author.getId())\n              .name(author.getName())\n              .email(author.getEmail())\n              .build();\n        }).collect(Collectors.toList());\n  }\n\n  @Override\n  public AuthorDto getAuthorById(UUID authorId) {\n    Optional<Author> byId = authorRepository.findById(authorId);\n    Author author = byId.get();\n    return AuthorDto.builder()\n        .id(author.getId())\n        .name(author.getName())\n        .email(author.getEmail())\n        .build();\n  }\n\n  @Override\n  public UUID createAuthor(AuthorDto authorDto) {\n    Author builtAuthor = Author.builder()\n        .id(authorDto.getId())\n        .name(authorDto.getName())\n        .email(authorDto.getEmail())\n        .build();\n    Author created = authorRepository.saveAndFlush(builtAuthor);\n    return created.getId();\n  }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/social/graphqloriginal/service/impl/AuthorServiceImpl.java b/src/main/java/com/social/graphqloriginal/service/impl/AuthorServiceImpl.java
+--- a/src/main/java/com/social/graphqloriginal/service/impl/AuthorServiceImpl.java	(revision 911a778337c892c26198d1dcc726bb6b961ecbed)
++++ b/src/main/java/com/social/graphqloriginal/service/impl/AuthorServiceImpl.java	(date 1645805294793)
+@@ -44,7 +44,6 @@
+   @Override
+   public UUID createAuthor(AuthorDto authorDto) {
+     Author builtAuthor = Author.builder()
+-        .id(authorDto.getId())
+         .name(authorDto.getName())
+         .email(authorDto.getEmail())
+         .build();
+Index: src/test/resources/response/author-query.json
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/resources/response/author-query.json b/src/test/resources/response/author-query.json
+new file mode 100644
+--- /dev/null	(date 1645805506868)
++++ b/src/test/resources/response/author-query.json	(date 1645805506868)
+@@ -0,0 +1,49 @@
++{
++  "data": {
++    "authors": [
++      {
++        "id": "b8addf5e-43f8-4165-9a5f-ab73094a5b1e",
++        "name": "peter",
++        "email": "peteer@gmail.com",
++        "posts": [
++          {
++            "id": "8144f608-3e87-47ea-ad16-677d5679b445",
++            "title": "post title"
++          }
++        ]
++      },
++      {
++        "id": "bffc75ba-c8e0-4178-93c9-20eb6cafed75",
++        "name": "Smith",
++        "email": "Smith@gmail.com",
++        "posts": [
++          {
++            "id": "883b8a41-831f-4a1a-86ca-d26adc8f84aa",
++            "title": "spring boot"
++          }
++        ]
++      },
++      {
++        "id": "44b0ed8f-351c-4368-a472-cadd17444947",
++        "name": "John",
++        "email": "John@gmail.com",
++        "posts": [
++          {
++            "id": "6c80180c-51de-4f56-81c4-da0a8fbfa792",
++            "title": "REACT"
++          },
++          {
++            "id": "7e759e91-a0d4-469b-ad81-50ba3969d211",
++            "title": "JS"
++          }
++        ]
++      },
++      {
++        "id": "023946ee-6173-4d49-8bac-c0b9e4a7ba88",
++        "name": "Shane",
++        "email": "Shane@gmail.com",
++        "posts": []
++      }
++    ]
++  }
++}
+\ No newline at end of file
+Index: src/main/java/com/social/graphqloriginal/resolver/AuthorMutationResolver.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/social/graphqloriginal/resolver/AuthorMutationResolver.java b/src/main/java/com/social/graphqloriginal/resolver/author/AuthorMutationResolver.java
+rename from src/main/java/com/social/graphqloriginal/resolver/AuthorMutationResolver.java
+rename to src/main/java/com/social/graphqloriginal/resolver/author/AuthorMutationResolver.java
+--- a/src/main/java/com/social/graphqloriginal/resolver/AuthorMutationResolver.java	(revision 911a778337c892c26198d1dcc726bb6b961ecbed)
++++ b/src/main/java/com/social/graphqloriginal/resolver/author/AuthorMutationResolver.java	(date 1645805294824)
+@@ -1,4 +1,4 @@
+-package com.social.graphqloriginal.resolver;
++package com.social.graphqloriginal.resolver.author;
+ 
+ import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+ import com.social.graphqloriginal.service.AuthorService;
+Index: pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project xmlns=\"http://maven.apache.org/POM/4.0.0\" xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\"\n         xsi:schemaLocation=\"http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd\">\n    <modelVersion>4.0.0</modelVersion>\n    <parent>\n        <groupId>org.springframework.boot</groupId>\n        <artifactId>spring-boot-starter-parent</artifactId>\n        <version>2.6.3</version>\n        <relativePath/> <!-- lookup parent from repository -->\n    </parent>\n    <groupId>com.social</groupId>\n    <artifactId>graphql-original</artifactId>\n    <version>0.0.1-SNAPSHOT</version>\n    <name>graphql-original</name>\n    <description>Demo project for Spring Boot</description>\n    <properties>\n        <java.version>11</java.version>\n    </properties>\n    <dependencies>\n        <!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-spring-boot-starter -->\n        <dependency>\n            <groupId>com.graphql-java</groupId>\n            <artifactId>graphql-spring-boot-starter</artifactId>\n            <version>5.0.2</version>\n        </dependency>\n        <!-- https://mvnrepository.com/artifact/com.graphql-java/graphql-java-tools -->\n        <dependency>\n            <groupId>com.graphql-java</groupId>\n            <artifactId>graphql-java-tools</artifactId>\n            <version>5.2.4</version>\n        </dependency>\n        <!-- https://mvnrepository.com/artifact/com.graphql-java/graphiql-spring-boot-starter -->\n        <dependency>\n            <groupId>com.graphql-java</groupId>\n            <artifactId>graphiql-spring-boot-starter</artifactId>\n            <version>5.0.2</version>\n            <scope>runtime</scope>\n        </dependency>\n        <dependency>\n            <groupId>com.graphql-java</groupId>\n            <artifactId>voyager-spring-boot-starter</artifactId>\n            <version>5.0.2</version>\n            <scope>runtime</scope>\n        </dependency>\n\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-data-jpa</artifactId>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-web</artifactId>\n        </dependency>\n\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-devtools</artifactId>\n            <scope>runtime</scope>\n            <optional>true</optional>\n        </dependency>\n        <dependency>\n            <groupId>com.h2database</groupId>\n            <artifactId>h2</artifactId>\n            <scope>runtime</scope>\n        </dependency>\n        <dependency>\n            <groupId>org.projectlombok</groupId>\n            <artifactId>lombok</artifactId>\n            <optional>true</optional>\n        </dependency>\n        <dependency>\n            <groupId>org.springframework.boot</groupId>\n            <artifactId>spring-boot-starter-test</artifactId>\n            <scope>test</scope>\n        </dependency>\n    </dependencies>\n\n    <build>\n        <plugins>\n            <plugin>\n                <groupId>org.springframework.boot</groupId>\n                <artifactId>spring-boot-maven-plugin</artifactId>\n                <configuration>\n                    <excludes>\n                        <exclude>\n                            <groupId>org.projectlombok</groupId>\n                            <artifactId>lombok</artifactId>\n                        </exclude>\n                    </excludes>\n                </configuration>\n            </plugin>\n        </plugins>\n    </build>\n\n</project>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/pom.xml b/pom.xml
+--- a/pom.xml	(revision 911a778337c892c26198d1dcc726bb6b961ecbed)
++++ b/pom.xml	(date 1645806595384)
+@@ -73,6 +73,13 @@
+             <artifactId>spring-boot-starter-test</artifactId>
+             <scope>test</scope>
+         </dependency>
++        <dependency>
++            <groupId>com.graphql-java</groupId>
++            <artifactId>graphql-spring-boot-test</artifactId>
++            <version>5.0.2</version>
++            <scope>test</scope>
++        </dependency>
++
+     </dependencies>
+ 
+     <build>
+Index: src/main/java/com/social/graphqloriginal/resolver/PostMutationResolver.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/social/graphqloriginal/resolver/PostMutationResolver.java b/src/main/java/com/social/graphqloriginal/resolver/post/PostMutationResolver.java
+rename from src/main/java/com/social/graphqloriginal/resolver/PostMutationResolver.java
+rename to src/main/java/com/social/graphqloriginal/resolver/post/PostMutationResolver.java
+--- a/src/main/java/com/social/graphqloriginal/resolver/PostMutationResolver.java	(revision 911a778337c892c26198d1dcc726bb6b961ecbed)
++++ b/src/main/java/com/social/graphqloriginal/resolver/post/PostMutationResolver.java	(date 1645805294850)
+@@ -1,4 +1,4 @@
+-package com.social.graphqloriginal.resolver;
++package com.social.graphqloriginal.resolver.post;
+ 
+ import com.coxautodev.graphql.tools.GraphQLMutationResolver;
+ import com.social.graphqloriginal.service.PostService;
+Index: src/main/java/com/social/graphqloriginal/resolver/AuthorQueryResolver.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/social/graphqloriginal/resolver/AuthorQueryResolver.java b/src/main/java/com/social/graphqloriginal/resolver/author/AuthorQueryResolver.java
+rename from src/main/java/com/social/graphqloriginal/resolver/AuthorQueryResolver.java
+rename to src/main/java/com/social/graphqloriginal/resolver/author/AuthorQueryResolver.java
+--- a/src/main/java/com/social/graphqloriginal/resolver/AuthorQueryResolver.java	(revision 911a778337c892c26198d1dcc726bb6b961ecbed)
++++ b/src/main/java/com/social/graphqloriginal/resolver/author/AuthorQueryResolver.java	(date 1645805294769)
+@@ -1,4 +1,4 @@
+-package com.social.graphqloriginal.resolver;
++package com.social.graphqloriginal.resolver.author;
+ 
+ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+ import com.social.graphqloriginal.service.AuthorService;
+Index: src/main/java/com/social/graphqloriginal/resolver/PostFieldResolver.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/social/graphqloriginal/resolver/PostFieldResolver.java b/src/main/java/com/social/graphqloriginal/resolver/post/PostFieldResolver.java
+rename from src/main/java/com/social/graphqloriginal/resolver/PostFieldResolver.java
+rename to src/main/java/com/social/graphqloriginal/resolver/post/PostFieldResolver.java
+--- a/src/main/java/com/social/graphqloriginal/resolver/PostFieldResolver.java	(revision 911a778337c892c26198d1dcc726bb6b961ecbed)
++++ b/src/main/java/com/social/graphqloriginal/resolver/post/PostFieldResolver.java	(date 1645805294755)
+@@ -1,4 +1,4 @@
+-package com.social.graphqloriginal.resolver;
++package com.social.graphqloriginal.resolver.post;
+ 
+ import com.coxautodev.graphql.tools.GraphQLResolver;
+ import com.social.graphqloriginal.service.AuthorService;
+Index: src/main/java/com/social/graphqloriginal/resolver/PostQueryResolver.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/social/graphqloriginal/resolver/PostQueryResolver.java b/src/main/java/com/social/graphqloriginal/resolver/post/PostQueryResolver.java
+rename from src/main/java/com/social/graphqloriginal/resolver/PostQueryResolver.java
+rename to src/main/java/com/social/graphqloriginal/resolver/post/PostQueryResolver.java
+--- a/src/main/java/com/social/graphqloriginal/resolver/PostQueryResolver.java	(revision 911a778337c892c26198d1dcc726bb6b961ecbed)
++++ b/src/main/java/com/social/graphqloriginal/resolver/post/PostQueryResolver.java	(date 1645812018281)
+@@ -1,4 +1,4 @@
+-package com.social.graphqloriginal.resolver;
++package com.social.graphqloriginal.resolver.post;
+ 
+ import com.coxautodev.graphql.tools.GraphQLQueryResolver;
+ import com.social.graphqloriginal.service.PostService;
+@@ -16,6 +16,10 @@
+   private PostService postService;
+ 
+   public List<PostDto> recentPosts(int count, int offset){
+-    return postService.getRecentPosts(count, offset);
++//    return postService.getRecentPosts(count, offset);
++    PostDto build = PostDto.builder()
++        .id(UUID.randomUUID())
++        .build();
++    return Collections.singletonList(build);
+   }
+ }
+Index: src/main/java/com/social/graphqloriginal/resolver/AuthorFieldResolver.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/social/graphqloriginal/resolver/AuthorFieldResolver.java b/src/main/java/com/social/graphqloriginal/resolver/author/AuthorFieldResolver.java
+rename from src/main/java/com/social/graphqloriginal/resolver/AuthorFieldResolver.java
+rename to src/main/java/com/social/graphqloriginal/resolver/author/AuthorFieldResolver.java
+--- a/src/main/java/com/social/graphqloriginal/resolver/AuthorFieldResolver.java	(revision 911a778337c892c26198d1dcc726bb6b961ecbed)
++++ b/src/main/java/com/social/graphqloriginal/resolver/author/AuthorFieldResolver.java	(date 1645805294907)
+@@ -1,4 +1,4 @@
+-package com.social.graphqloriginal.resolver;
++package com.social.graphqloriginal.resolver.author;
+ 
+ import com.coxautodev.graphql.tools.GraphQLResolver;
+ import com.social.graphqloriginal.service.PostService;
+Index: src/main/resources/graphql/post/post-input.graphqls
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/graphql/post/post-input.graphqls b/src/main/resources/graphql/post/post-input.graphqls
+new file mode 100644
+--- /dev/null	(date 1645805294787)
++++ b/src/main/resources/graphql/post/post-input.graphqls	(date 1645805294787)
+@@ -0,0 +1,6 @@
++input PostInput{
++    title:String!
++    description: String!
++    category: String!
++    authorId: ID!
++}
+\ No newline at end of file
+Index: src/main/resources/graphql/post/post.graphqls
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/graphql/post/post.graphqls b/src/main/resources/graphql/post/post.graphqls
+new file mode 100644
+--- /dev/null	(date 1645805294784)
++++ b/src/main/resources/graphql/post/post.graphqls	(date 1645805294784)
+@@ -0,0 +1,7 @@
++type Post {
++    id:ID!
++    title:String!
++    description: String!
++    category: String!
++    author: Author!
++}
+Index: src/main/resources/graphql/author/author-input.graphqls
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/graphql/author/author-input.graphqls b/src/main/resources/graphql/author/author-input.graphqls
+new file mode 100644
+--- /dev/null	(date 1645805294779)
++++ b/src/main/resources/graphql/author/author-input.graphqls	(date 1645805294779)
+@@ -0,0 +1,4 @@
++input AuthorInput {
++    name: String!
++    email: String!
++}
+\ No newline at end of file
+Index: src/main/resources/graphql/query.graphqls
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/graphql/query.graphqls b/src/main/resources/graphql/query.graphqls
+new file mode 100644
+--- /dev/null	(date 1645805294943)
++++ b/src/main/resources/graphql/query.graphqls	(date 1645805294943)
+@@ -0,0 +1,14 @@
++
++type Query {
++    helloWorld: String!
++    greetingMessage(firstName: String!, secondName:String):String!
++    message: Message!
++    rollDice: [Int!]!
++    authors: [Author]!
++    recentPosts(count: Int!, offset: Int!): [Post]!
++}
++
++
++
++
++
+Index: src/main/resources/graphql/mutation/mutation.graphqls
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/graphql/mutation/mutation.graphqls b/src/main/resources/graphql/mutation/mutation.graphqls
+new file mode 100644
+--- /dev/null	(date 1645805294801)
++++ b/src/main/resources/graphql/mutation/mutation.graphqls	(date 1645805294801)
+@@ -0,0 +1,4 @@
++type Mutation {
++    createAuthor(author: AuthorInput): ID!
++    createPost(post: PostInput): ID!
++}
+\ No newline at end of file
+Index: src/main/resources/graphql/author/author.graphqls
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/graphql/author/author.graphqls b/src/main/resources/graphql/author/author.graphqls
+new file mode 100644
+--- /dev/null	(date 1645805294798)
++++ b/src/main/resources/graphql/author/author.graphqls	(date 1645805294798)
+@@ -0,0 +1,6 @@
++type Author {
++    id: ID!
++    name: String!
++    email: String!
++    posts: [Post]!
++}
+\ No newline at end of file
+Index: src/test/resources/request/author-query.graphqls
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/test/resources/request/author-query.graphqls b/src/test/resources/request/author-query.graphqls
+new file mode 100644
+--- /dev/null	(date 1645805294795)
++++ b/src/test/resources/request/author-query.graphqls	(date 1645805294795)
+@@ -0,0 +1,11 @@
++query {
++     authors{
++       id
++       name
++       email
++       posts{
++         id
++         title
++       }
++     }
++}
+\ No newline at end of file
+Index: src/main/resources/graphql/comment/comment.graphqls
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/graphql/comment/comment.graphqls b/src/main/resources/graphql/comment/comment.graphqls
+new file mode 100644
+--- /dev/null	(date 1645805294790)
++++ b/src/main/resources/graphql/comment/comment.graphqls	(date 1645805294790)
+@@ -0,0 +1,5 @@
++
++type Comment {
++    id:ID!
++    text:String!
++}
+\ No newline at end of file
